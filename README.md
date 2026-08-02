@@ -1,5 +1,7 @@
 <div align="center">
 
+![banner](assets/loan_amount_banner.png)
+
 <img src="https://img.shields.io/badge/💰-LoanCast-10b981?style=for-the-badge&labelColor=0d1117" alt="LoanCast" height="40"/>
 
 # LoanCast: AI-Powered Loan Amount Predictor
@@ -32,6 +34,12 @@
 **LoanCast** is an intelligent regression-based web application that predicts the exact loan amount an applicant is likely to be approved for. By analyzing financial and demographic features such as credit scores, income stability, property values, and co-applicant status, the model provides data-driven financial insights.
 
 > **Key Finding:** Applicants with high credit scores and a reliable co-applicant are significantly more likely to receive larger loan approvals.
+
+---
+
+## 🎥 App in Action
+
+![Streamlit GIF](assets/gif_streamlit.gif)
 
 ---
 
@@ -89,9 +97,16 @@
 
 ---
 
-## 📊 Model Evaluation
+## 📊 Exploratory Data Analysis & Modeling
 
-Several regression models were tested during development. **Random Forest** consistently yielded the lowest Root Mean Square Error (RMSE).
+### Feature Correlation
+Here is the correlation between the various financial and demographic features in the dataset:
+![heatmap](assets/heatmap.png)
+
+### Model Evaluation (Random Forest)
+Several regression models were tested during development. **Random Forest** consistently yielded the lowest Root Mean Square Error (RMSE) on a range between 0 and 400,000.
+
+![RMSE](assets/rmse.png)
 
 | Model | RMSE |
 |-------|------|
@@ -99,10 +114,15 @@ Several regression models were tested during development. **Random Forest** cons
 | Bagging Regressor | 20780.02 |
 | Gradient Boosting | 26974.42 |
 
-### Feature Importance
-Based on the analysis:
-* **Most Predictive Features**: Requested loan amount, credit score, and presence of a co-applicant.
-* **Least Predictive Features**: Expense types and gender.
+### Feature Importance Analysis
+
+**Most Predictive Features:**
+The requested loan amount, credit score, and presence of a co-applicant heavily influence the final approved amount.
+![Top 10](assets/top10.png)
+
+**Least Predictive Features:**
+Features like expense types and gender were found to have the lowest impact on the model's decision.
+![Bottom 10](assets/bottom10.png)
 
 ---
 
@@ -136,22 +156,6 @@ secret_access_key = "YOUR_AWS_SECRET_KEY"
 streamlit run loan_amount_app.py
 ```
 The app opens at **`http://localhost:8501`**.
-
----
-
-## 📂 Repository Structure
-
-```
-.
-├── assets/                               # Visual assets and images
-├── datasets/                             # Train and test datasets
-├── .gitignore                            # Ignored files
-├── LICENSE                               # MIT License
-├── Loan_amount_prediction.ipynb          # Jupyter notebook with EDA & Modeling
-├── loan_amount_app.py                    # Main Streamlit application
-├── requirements.txt                      # Project dependencies
-└── README.md                             # You are here
-```
 
 ---
 
